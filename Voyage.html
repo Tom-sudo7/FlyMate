@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Voyage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <title>Réservation en ligne pour voyager !</title>
+    <link rel="icon" href="Voyage.png" type="image/x-icon">
+</head>
+<body>
+
+    <div class="contrainer">
+        <div class="banniere-titre">
+            <h1>
+                Trouvez votre prochaine destination !
+            </h1>
+        </div>
+        <form id="form">
+            <div class="field">
+                <select id="pays">
+                    <option value="hawai">Hawaï</option>
+                    <option value="agadir">Agadir</option>
+                    <option value="mumbai">Mumbai</option>
+                    <option value="newyork">New York</option>
+                    <option value="borabora">Bora-Bora</option>
+                    <option value="tahiti">Tahiti</option>
+                </select>
+            </div>
+            
+            <!-- Date de départ -->
+             <div class="field">
+                <input type="date" id="start"
+                value="2025-07-28"
+                min="2025-07-27">           
+            </div>
+            <!-- Date de retour -->
+             <div class="field">
+                <input type="date" id="end"
+                value="2025-08-28"
+                min="2025-08-27">
+             </div>         
+            <!-- Bouton -->
+             <button type="submit"><i class="fas fa-plane"></i></button>
+
+        </form>
+
+        <!-- Ici les résultats de la sélection -->
+        <div class="liste-resultats">
+        </div>
+        
+        
+    </div>
+             
+    
+    <script src="Voyage.js"></script>
+
+</body>
+</html>
