@@ -12,7 +12,7 @@ body{
     font-family: arial;
     color: white;
 }
-.contrainer{
+.container{
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -24,16 +24,16 @@ body{
     background-size: cover;
 }
 .banniere-titre{
-    margin-bottom: 1rem;
+    margin-bottom: 5rem;
 }
 #form{
     display: flex;
+    flex-direction: row;
     justify-content: center;
 }
 .field{
     margin: 1rem;
 }
-
 .field select, input[type=date]{
     height: 6rem;
     width: 20rem;
@@ -46,6 +46,7 @@ button{
     border-radius: 50%;
     background-color: #e1a026;
     color: white;
+    margin-top: 2rem;
 }
 
 .liste-resultats{
