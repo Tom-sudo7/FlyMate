@@ -107,7 +107,7 @@ function displayDetails(){
                             <p>
                                 prix vol inclus ${resultat.prix}€
                             </p>
-                            <button>Go !</button>
+                            <button onclick="window.location.href = >Go !</button>
                         </div>
                         `;
             // je place cette DIV dans la page
