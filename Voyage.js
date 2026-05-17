@@ -2,13 +2,16 @@ console.log('connecté');
 
 // Le formulaire
 const form = document.getElementById('form');
-// Les champs - input text et input date
-const pays = document.getElementById('pays'); 
-const start = document.getElementById('start'); 
-const end = document.getElementById('end'); 
-const listeResultats = document.querySelector('.liste-resultats'); 
-// Juste en-dessous des sélections
-//base de données
+
+// Les champs
+const depart = document.getElementById('Depart');
+const arrive = document.getElementById('Arrive');
+const start = document.getElementById('start');
+const end = document.getElementById('end');
+
+const listeResultats = document.querySelector('.liste-resultats');
+
+// base de données
 const voyages = [
     {
         pays : "hawai",
@@ -19,102 +22,95 @@ const voyages = [
         pays : "agadir",
         prix : 1090,
         voyageurs : 2
-
     },
     {
         pays : "mumbai",
-        prix : 1550, 
+        prix : 1550,
         voyageurs : 4
-
-    }, 
+    },
     {
-        pays : "newwork",
+        pays : "newyork",
         prix : 1490,
         voyageurs : 2
-
-    }, 
+    },
     {
-        pays : "borabora",
-        prix : 1890, 
+        pays : "bora-bora",
+        prix : 1890,
         voyageurs : 5
     },
     {
         pays : "tahiti",
         prix : 1790,
         voyageurs : 4
-
     }
-]// ici fin du tableau
-// Je vérifie le contenu de voyages
-// console.log(voyages, "tableau voyages"); 
-
-// 
-
+];
 
 displayDetails();
 
 form.addEventListener('submit', function(e){
-    // empêcher le rafraîchissement de la page
-    e.preventDefault(); 
-    console.log('formulaire validé'); 
-    // Je stocke les valeurs dans l'objet choix
+
+    e.preventDefault();
+
+    console.log('formulaire validé');
+
     const choix = {
-        pays : pays.value,
+        depart : depart.value,
+        arrive : arrive.value,
         start : start.value,
-        end: end.value
+        end : end.value
     };
-    console.log(choix, "choix"); 
 
-    // Je transforme l'objet
-    const choixString = JSON.stringify(choix); 
-    // console.log(choixString); 
+    console.log(choix, "choix");
 
-    // Je place l'objet dans le localStorage
-    localStorage.setItem('details', choixString); 
-    // On rafraichit la page pour faire apparaitre les informations
-   window.location.href = window.location.href;
-    
-}); // Fermeture form.addEventListener
+    const choixString = JSON.stringify(choix);
+
+    localStorage.setItem('details', choixString);
+
+    window.location.href = window.location.href;
+
+});
 
 function displayDetails(){
-    // On transforme au bon format
 
-        if (localStorage.getItem('details')) {
-          const choixObjet = JSON.parse(localStorage.getItem('details'));
-          // on place les valeurs dans les champs
-          pays.value = choixObjet.pays;
-          start.value = choixObjet.start;
-          end.value = choixObjet.end;
+    if (localStorage.getItem('details')) {
 
-          // filter en fonction du pays enregistré
-          const resultats = voyages.filter(
-            (voyage) => voyage.pays === pays.value
-          );
-          // console.log(resultats, "resultats");
+        const choixObjet = JSON.parse(localStorage.getItem('details'));
 
-          // boucle dans le tableau
-          resultats.forEach((resultat) => {
+        depart.value = choixObjet.depart;
+        arrive.value = choixObjet.arrive;
+        start.value = choixObjet.start;
+        end.value = choixObjet.end;
+
+        const resultats = voyages.filter(
+            (voyage) =>
+                voyage.pays === arrive.value
+        );
+
+        resultats.forEach((resultat) => {
+
             console.log(resultat, 'résultat');
-            // je crée une DIV avec les valeurs à l'intérieur
+
             const item = `
-                        <div class="item">
-                            <p class="item-pays">
-                                ${resultat.pays}
-                            <p>
-                            <p>
-                                offre pour ${resultat.voyageurs} personnes
-                            </p>
-                            <p>
-                                prix vol inclus ${resultat.prix}€
-                            </p>
-                            <button onclick="window.location.href = >Go !</button>
-                        </div>
-                        `;
-            // je place cette DIV dans la page
+                <div class="item">
+                    <p class="item-pays">
+                        ${resultat.pays}
+                    </p>
+
+                    <p>
+                        offre pour ${resultat.voyageurs} personnes
+                    </p>
+
+                    <p>
+                        prix vol inclus ${resultat.prix}€
+                    </p>
+                    <button>Go !</button>
+                </div>
+            `;
+
             listeResultats.innerHTML += item;
-          }); // Fermeture de la boucle
-        }else{
-            // pas de localStorage
-            console.log('pas de storage');
-        }  
-}; // Fermeture de displayDetails
+        });
+
+    } else {
+        console.log('pas de storage');
+    }
+}
