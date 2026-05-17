@@ -14,6 +14,11 @@ const listeResultats = document.querySelector('.liste-resultats');
 // base de données
 const voyages = [
     {
+        pays : "paris",
+        prix : 1630,
+        voyageurs : 1
+    },
+    {
         pays : "hawai",
         prix : 1925,
         voyageurs : 4
@@ -103,14 +108,18 @@ function displayDetails(){
                     <p>
                         prix vol inclus ${resultat.prix}€
                     </p>
+
                     <button>Go !</button>
                 </div>
             `;
 
             listeResultats.innerHTML += item;
+
         });
 
     } else {
+
         console.log('pas de storage');
+
     }
 }
