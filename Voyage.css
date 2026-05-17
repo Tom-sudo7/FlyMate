@@ -19,7 +19,7 @@ body{
     flex-direction: column;
     align-items: center;
     /*background-color: #1E2337; */
-    background-image: url(Imagevoyage.jpg);
+    background-image: url('Imagevoyage.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
