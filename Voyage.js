@@ -16,7 +16,7 @@ const voyages = [
     {
         pays : "paris",
         prix : 1630,
-        voyageurs : 1
+        voyageurs : 2
     },
     {
         pays : "hawai",
@@ -34,7 +34,7 @@ const voyages = [
         voyageurs : 4
     },
     {
-        pays : "newyork",
+        pays : "new york",
         prix : 1490,
         voyageurs : 2
     },
@@ -106,10 +106,10 @@ function displayDetails(){
                     </p>
 
                     <p>
-                        prix vol inclus ${resultat.prix}€
+                        prix du vol ${resultat.prix}€
                     </p>
 
-                    <button>Go !</button>
+                    <button onclick="window.location.href = 'https://www.google.com/search?q=${encodeURIComponent(depart.value + " " + arrive.value + " " + resultat.prix)}'">Go !</button>
                 </div>
             `;
 
